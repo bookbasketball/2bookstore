@@ -1,9 +1,15 @@
 class BooksController < ApplicationController
+  before_action :find_book, only: [:show, :edit, :update, :destory]
+  # before_action :find_book, expect: [:index, :new, :create] 等同於上行
   
   def index
     @books = Book.all
   end
 
+  def show
+    # find_book
+  end
+  
   def new
     @book = Book.new
   end
@@ -21,7 +27,8 @@ class BooksController < ApplicationController
   end
 
   def edit
-    @book = Book.find(params[:id])  # 業界常用
+    # find_book
+    # @book = Book.find(params[:id]) 業界常用
     # @book = Book.find_by(id: params[:id])
     # @book = Book.find_by(id: params["id"])
     # redirect_to root_path unless @book, notice: '查無此書'
@@ -36,7 +43,7 @@ class BooksController < ApplicationController
   end
 
   def update
-    @book = Book.find(params[:id])
+    # find_book
 
     if @book.update(book_params)
       redirect_to root_path, notice: '更新成功'
@@ -45,7 +52,18 @@ class BooksController < ApplicationController
     end
   end
 
+  def destroy
+    # find_book
+    @book.destroy
+    redirect_to root_path, notice: '資料已刪除'
+  end
+
+
   private
+
+  def find_book
+    @book = Book.find(params[:id])
+  end
 
   # Strong Parameters (從rails 4 開始引進)
   def book_params
