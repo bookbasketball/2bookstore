@@ -1,3 +1,8 @@
 class Publisher < ApplicationRecord
-  has_many : books
+  #relationships
+  has_many :books
+
+  #scopes
+  scope :available, -> { where(online: true) }
+  
 end

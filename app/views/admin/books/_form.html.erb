@@ -6,7 +6,9 @@
   </ul>
 <% end %>
 
-<%= form_for(@book) do |form| %>
+<%= javascript_pack_tag 'datepicker' %>
+
+<%= form_for([:admin, @book]) do |form| %>
 
   <div class="field"></div>
     <%= cover_image_tag @book %>
@@ -14,9 +16,22 @@
     <%= form.file_field :cover_image, class: 'input' %>
   </div>
 
-  <div class="field">
-    <%= form.label :title, '標題', class: 'label' %>
-    <%= form.text_field :title, class: 'input' %>
+  <div class="columns">
+    <div class="column is-8">
+      <div class="field">
+        <%= form.label :title, '標題', class: 'label' %>
+        <%= form.text_field :title, class: 'input' %>
+      </div>
+    </div>
+    <div class="column is-4">
+      <div class="field">
+        <%= form.label :publisher_id, '出版社', class: 'label' %>
+          <div class="select is-fullwidth">
+            <%= form.collection_select :publisher_id, Publisher.available, :id, :name %>
+            <!-- <%= form.collection_select :publisher_id, Publisher.where(online: true), :id, :name %> -->
+          </div>
+      </div>
+    </div>
   </div>
 
   <div class="field">
@@ -25,24 +40,28 @@
   </div>
 
   <div class="columns">
+  
     <div class="column">
       <div class="field">
         <%= form.label :list_price, '售價', class: 'label' %>
         <%= form.number_field :list_price, class: 'input' %>
       </div>
     </div>
+
     <div class="column">
       <div class="field">
         <%= form.label :sell_price, '特價', class: 'label' %>
         <%= form.number_field :sell_price, class: 'input' %>
       </div>
     </div>
+
     <div class="column">
       <div class="field">
         <%= form.label :page_num, '頁數', class: 'label' %>
         <%= form.number_field :page_num, class: 'input' %>
       </div>
     </div>
+
   </div>
 
   <div class="columns">
@@ -76,4 +95,3 @@
   </div>
 <% end %>
 
-<%= javascript_pack_tag 'datepicker' %>
