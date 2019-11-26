@@ -1,49 +1,42 @@
-<h1 class="title">書本列表</h1>
+<h1 class="title"><i class="fas fa-book"></i> 書本列表</h1>
 
 <%= link_to "新增書本", new_book_path, class: 'button is-primary is-middle' %>
 
-<ul>
-  <% @books.each do |book| %>
-    <li>
-      <%= link_to book.title, book_path(book) %> <!-- book_path(book) 可簡寫為 book -->
-      <%= link_to "編輯", edit_book_path(book) %>
-      <%= link_to "刪除", book_path(book), method: 'delete', data: {confirm: '你確定嗎???'} %>
-    </li>
-  <% end %>
-</ul>
-
-<%= render 'ad', title: 'ad1', content: 'lorem1' %>
-<%= render 'ad', title: 'ad2', content: 'lorem2' %>
-<%= render 'ad', title: 'ad3', content: 'lorem3' %>
-
 <% @books.each do |book| %>
-  <div class="card">
-    <div class="card-image">
-      <figure class="image is-4by3">
-        <img src="https://picsum.photos/1290/960/?random=50" alt="Placeholder image">
-      </figure>
-    </div>
-    <div class="card-content">
-      <div class="media">
-        <div class="media-left">
-          <figure class="image is-48x48">
-            <img src="https://picsum.photos/1290/960/?random=52" alt="Placeholder image">
+
+  <section class="columns is-multiline">
+  <% @books.each do |book| %>
+    <div class="column is-4">
+      <div class="card">
+        <div class="card-image">
+          <figure class="image">
+            <%= cover_image_tag book, width: 300, height: 300, dummy_img: true %>
           </figure>
         </div>
-        <div class="media-content">
-          <p class="title is-4"><%= book.title %></p>
-          <p class="subtitle is-6">@johnsmith</p>
+        <div class="card-content">
+          <div class="media">
+            <div class="media-left">
+              <figure class="image is-48x48">
+                <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+              </figure>
+            </div>
+            <div class="media-content">
+              <p class="title is-4"><%= link_to book.title, book_path(book) %></p>
+              <p class="subtitle is-6">@johnsmith</p>
+            </div>
+          </div>
+
+          <div class="content">
+            <%= book.description %>
+            <time><%= book.published_at %></time>
+            <hr>
+            <%= link_to "編輯", edit_book_path(book), class: 'button is-light is-small' %>
+            <%= link_to "刪除", book_path(book), method: 'delete', data: {confirm: '你確定嗎???'}, class: 'button is-light is-small' %>
+          </div>
         </div>
       </div>
-      <div class="content">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-        <a href="#">#css</a> <a href="#">#responsive</a>
-        <br>
-        <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+  </section>
 
-<img src="https://picsum.photos/width/height/?random=1" alt="img-description">
+<% end %>

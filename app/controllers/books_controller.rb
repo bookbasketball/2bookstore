@@ -3,9 +3,9 @@ class BooksController < ApplicationController
   # before_action :find_book, expect: [:index, :new, :create] 等同於上行
   
   def index
-    @books = Book.all
+    @books = Book.where(on_sell: true).with_attached_cover_image
   end
-
+  
   def show
     # find_book
   end
@@ -58,7 +58,6 @@ class BooksController < ApplicationController
     redirect_to root_path, notice: '資料已刪除'
   end
 
-
   private
 
   def find_book
@@ -67,7 +66,7 @@ class BooksController < ApplicationController
 
   # Strong Parameters (從rails 4 開始引進)
   def book_params
-    clean_params = params.require(:book).permit(:title, :description, :list_price, :sell_price, :page_num, :isbn, :isbn13)
+    clean_params = params.require(:book).permit(:title, :description, :list_price, :sell_price, :page_num, :isbn, :isbn13, :cover_image, :on_sell, :published_at)
   end
 
 end
