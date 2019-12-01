@@ -1,9 +1,12 @@
 <% if @book.errors.any? %>
-  <ul>
-    <% @book.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
+  <div class="notification is-warning">
+    <button class="delete"></button>
+    <ul>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
 
 <%= javascript_pack_tag 'datepicker' %>

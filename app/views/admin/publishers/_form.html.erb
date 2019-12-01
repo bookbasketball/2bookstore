@@ -1,0 +1,39 @@
+<% if @publisher.errors.any? %>
+  <div class="notification is-warning">
+    <button class="delete"></button>
+    <ul>
+      <% @publisher.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for([:admin, @publisher]) do |form| %>
+
+  <div class="field">
+    <%= form.label :name, '出版社名稱', class: 'label' %>
+    <%= form.text_area :name, class: 'textarea' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tel, '電話', class: 'label' %>
+    <%= form.text_area :tel, class: 'textarea' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address, '地址', class: 'label' %>
+    <%= form.text_area :address, class: 'textarea' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :online, '是否上架', class: 'checkbox' %>
+    <%= form.check_box :online %>
+  </div>
+
+  <div class="field">
+    <%= form.submit class: 'button is-light is-medium' %>
+  </div>
+
+<% end %>
+

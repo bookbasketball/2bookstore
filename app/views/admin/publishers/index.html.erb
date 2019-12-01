@@ -1,0 +1,13 @@
+<h1 class="title"><i class="fas fa-book"></i> 出版社列表</h1>
+
+<%= link_to "新增出版社", new_admin_publisher_path, class: 'button is-info is-middle' %>
+
+<ul>
+<% @publishers.each do |publisher| %>
+  <li>
+    <%= link_to publisher.name, admin_publisher_path(publisher) %>
+    <%= link_to "編輯", edit_admin_publisher_path(publisher), class: 'button is-light is-small' %>
+    <%= link_to "刪除", admin_publisher_path(publisher), method: 'delete', data: {confirm: '你確定嗎???'}, class: 'button is-light is-small' %>
+  </li>
+<% end %>
+</ul>

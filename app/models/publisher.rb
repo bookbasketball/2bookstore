@@ -1,4 +1,7 @@
 class Publisher < ApplicationRecord
+  #validates
+  validates :name, :tel, :address, presence: true
+  
   #relationships
   has_many :books
 

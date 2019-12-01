@@ -1,4 +1,4 @@
-<nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+<nav class="navbar is-info" role="navigation" aria-label="main navigation">
   <div class="navbar-brand is-flex">
     <div class="is-white">
       <%= link_to admin_root_path, class: 'navbar-item title' do %>
@@ -14,11 +14,14 @@
   </div>
 
   <div id="navbarBasicExample" class="navbar-menu">
-    <div class="navbar-start">
+    <div class="navbar-item">
       <%= link_to "書本列表", admin_books_path, class: 'navbar-item' %>
     </div>
-    <div class="navbar-start navbar-item is-right">
-      <%= link_to "回前台", books_path %>
+    <div class="navbar-item">
+      <%= link_to "出版社列表", admin_publishers_path, class: 'navbar-item' %>
+    </div>
+    <div class="navbar-item">
+      <%= link_to "回前台", books_path, class: 'navbar-item' %>
     </div>
 
     <div class="navbar-end">

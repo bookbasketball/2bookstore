@@ -1,8 +1,8 @@
 class BooksController < ApplicationController
   # before_action :find_book, only: [:show, :edit, :update, :destory]
   # before_action :find_book, expect: [:index, :new, :create] 等同於上行
-  before_action :authenticate_user!, expect: [:index, :show]
-  
+  before_action :authenticate_user!, except: [:index, :show]
+
   def index
     # @books = Book.where(on_sell: true).with_attached_cover_image
     # @books = Book.available.with_attached_cover_image -> 在Book Model定義available這個類別方法(book.rb)
@@ -11,7 +11,7 @@ class BooksController < ApplicationController
   end
   
   def show
-    # find_book
+    find_book
   end
   
   # def new
