@@ -8,6 +8,8 @@ class Book < ApplicationRecord
   has_one_attached :cover_image
   belongs_to :publisher # 對應publisher_id
   has_many :comments
+  has_many :tag_libs
+  has_many :categories, through: :tag_libs
 
   #scopes
   scope :available, -> { where(on_sell: true).where('list_price > 0') } #lamba是一個匿名函數

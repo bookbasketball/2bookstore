@@ -23,5 +23,6 @@ Rails.application.routes.draw do
     # get "/", to: 'book#index'
     resources :books   # /admin/books
     resources :publishers
+    resources :categories
   end
 end

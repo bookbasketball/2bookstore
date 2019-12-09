@@ -1,0 +1,29 @@
+<% if @category.errors.any? %>
+  <div class="notification is-warning">
+    <button class="delete"></button>
+    <ul>
+      <% @category.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for([:admin, @category]) do |form| %>
+
+  <div class="field">
+    <%= form.label :name, '分類名稱', class: 'label' %>
+    <%= form.text_area :name, class: 'textarea' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description, '分類描述', class: 'label' %>
+    <%= form.text_area :description, class: 'textarea' %>
+  </div>
+
+  <div class="field">
+    <%= form.submit class: 'button is-light is-medium' %>
+  </div>
+
+<% end %>
+

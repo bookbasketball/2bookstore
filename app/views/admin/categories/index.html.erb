@@ -1,0 +1,13 @@
+<h1 class="title"><i class="fas fa-book"></i> 分類列表</h1>
+
+<%= link_to "新增分類", new_admin_category_path, class: 'button is-info is-middle' %>
+
+<ul>
+<% @categories.each do |category| %>
+  <li>
+    <%= link_to category.name, admin_category_path(category) %>
+    <%= link_to "編輯", edit_admin_category_path(category), class: 'button is-light is-small' %>
+    <%= link_to "刪除", admin_category_path(category), method: 'delete', data: {confirm: '你確定嗎???'}, class: 'button is-light is-small' %>
+  </li>
+<% end %>
+</ul>
