@@ -8,4 +8,11 @@ nav.pagination .page {
   color: black;
   border-radius: 25%;
 }
+
+article.book_description {
+  p {
+    margin-bottom: 1.2em;
+  }
+}
+
 /*# sourceMappingURL=application.css.map */

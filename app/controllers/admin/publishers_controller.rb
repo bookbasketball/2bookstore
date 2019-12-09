@@ -1,8 +1,8 @@
-class Admin::PublishersController < ApplicationController
-  before_action :authenticate_user!
+class Admin::PublishersController < Admin::BaseController
+  # before_action :authenticate_user! -> 移至base_controller
   before_action :find_publisher, only: [:show, :edit, :update, :destroy]
 
-  layout 'backend'
+  # layout 'backend' -> 移至base_controller
 
   def index
     @publishers = Publisher.all

@@ -4,6 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[google_oauth2] # 若要增加串接Facebook，則可寫 %i[google_oauth2 facebook]
+
+  has_many :comments # 用User角度，查找留言。若不需要這個功能，就不用寫has_many
+
   def employee?
     role.in? ['staff', 'boss', 'admin']
   end

@@ -1,14 +1,17 @@
 # rails g controller admin/books
 # app/controllers/admin/books_controller.rb
 
-class Admin::BooksController < ApplicationController
-  before_action :authenticate_user!
+class Admin::BooksController < Admin::BaseController
+  # before_action :authenticate_user! -> 移至base_controller
   before_action :find_book, only: [:show, :edit, :update, :destroy]
 
-  layout 'backend'
+  # layout 'backend' -> 移至base_controller
 
   def index
-    @books = Book.available.with_attached_cover_image.page(params[:page]).per(3)
+    @books = Book.available
+                 .with_attached_cover_image
+                 .page(params[:page])
+                 .per(3)
   end
   
   def show
@@ -52,5 +55,12 @@ class Admin::BooksController < ApplicationController
   def book_params
     clean_params = params.require(:book).permit(:title, :description, :list_price, :sell_price, :page_num, :isbn, :isbn13, :cover_image, :on_sell, :published_at, :publisher_id)
   end
+
+  # 移至base_controller
+  # def permission_check!
+  #   if current_user.role != 'admin'
+  #     redirect_to root_path, notice: '無法存取'
+  #   end
+  # end
 
 end

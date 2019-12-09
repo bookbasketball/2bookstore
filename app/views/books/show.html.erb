@@ -1,1 +1,40 @@
 <h1>書名: <%= @book.title %></h1>
+
+<figure class="image">
+  <%= cover_image_tag @book, dummy_img: true %>
+</figure>
+
+<!-- <%= @book.description.html_safe %> 要確定輸入的內容是沒問題，才可這樣寫，否則不要-->
+
+<article class="book_description">
+  <%= simple_format(@book.description) %>
+</article>
+
+<!-- <%= simple_format(@book.description, {}, wrapper_tag: "article" )%> -->
+
+<section>
+  <%= form_with(model: @comment, url: comment_book_path(@book)) do |form| %>
+    <div class="field">
+      <%= form.label :title, '標題', class: 'label' %>
+      <%= form.text_field :title, class: 'input'%>
+    </div>
+    <div class="field">
+      <%= form.label :content, '內文', class: 'label' %>
+      <%= form.text_area :content, class: 'textarea' %>
+    </div>
+    <%= form.submit '送出', class: 'button is-info' %>
+  <% end %>
+</section>
+
+<section>
+  <% @book.comments.each do |comment| %>
+    <article class="messgae is-dark">
+      <div class="message-body">
+        <p>標題: <%= comment.title %></p>
+        內容:
+        <%= simple_format(comment.content) %>
+        <small><%= comment.created_at %></small>
+      </div>
+    </article>
+  <% end %>
+</section>
