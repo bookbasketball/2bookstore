@@ -1,3 +1,5 @@
+# 範例檔 : 在業界通常都會提供範例檔，該檔會在git push時推上GitHub
+
 #Oauth
 google_app_id: 'YOUR APP ID'
 google_app_sercet: 'YOUR APP SECRET'
