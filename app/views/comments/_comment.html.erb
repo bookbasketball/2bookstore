@@ -1,0 +1,8 @@
+<article class="messgae is-dark">
+  <div class="message-body">
+    <p>標題: <%= comment.title %></p>
+    內容:
+    <%= simple_format(comment.content) %>
+    <small><%= comment.created_at %></small>
+  </div>
+</article>

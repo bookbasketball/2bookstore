@@ -20,6 +20,11 @@
     <%= form.label :description, '分類描述', class: 'label' %>
     <%= form.text_area :description, class: 'textarea' %>
   </div>
+  
+  <div class="field">
+    <%= form.label :online, '是否存在', class: 'checkbox' %>
+    <%= form.check_box :online %>
+  </div>
 
   <div class="field">
     <%= form.submit class: 'button is-light is-medium' %>

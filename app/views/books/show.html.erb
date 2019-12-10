@@ -1,4 +1,14 @@
-<h1>書名: <%= @book.title %></h1>
+<h1 class="title">書名: <%= @book.title %></h1>
+
+<div data-controller="fav" data-fav-id="<%= params[:id] %>">
+  <a href="#" data-action="click->fav#toggle" class="button is-danger">
+    <% if user_signed_in? && @book.favorited_by?(current_user) %>
+      <i class="fas fa-heart" data-target="fav.icon"></i>
+    <% else %>
+      <i class="far fa-heart" data-target="fav.icon"></i>
+    <% end %>
+  </a>
+</div>
 
 <figure class="image">
   <%= cover_image_tag @book, dummy_img: true %>
@@ -13,7 +23,7 @@
 <!-- <%= simple_format(@book.description, {}, wrapper_tag: "article" )%> -->
 
 <section>
-  <%= form_with(model: @comment, url: comment_book_path(@book)) do |form| %>
+  <%= form_with(model: @comment, url: comment_book_path(@book), id: 'comment_form') do |form| %>
     <div class="field">
       <%= form.label :title, '標題', class: 'label' %>
       <%= form.text_field :title, class: 'input'%>
@@ -26,15 +36,17 @@
   <% end %>
 </section>
 
-<section>
-  <% @book.comments.each do |comment| %>
-    <article class="messgae is-dark">
-      <div class="message-body">
-        <p>標題: <%= comment.title %></p>
-        內容:
-        <%= simple_format(comment.content) %>
-        <small><%= comment.created_at %></small>
-      </div>
-    </article>
-  <% end %>
+<section id="comment_area">
+  <%= render @comments %>
+  <%# 原型 %><%#= render partial: @book.comments, collection: @book.comments %>
+  <%# 客製 %><%#= render partial: 'books/abc', collection: @book.comments as: :xyz %>
+  
+  <%# 30行寫法必須要符合這兩個條件
+  1. views/comments/_comment.html.erb 路徑及檔名要符合
+  2. views/comments/_comment.html.erb  的檔案裡要有 comment 這個區域變數 %>
+
+  <%# 原本寫法 %>
+  <%# @book.comments.each do |comment| %>
+    <%#= render 'comments/comment', comment: comment %>
+  <%# end %>
 </section>

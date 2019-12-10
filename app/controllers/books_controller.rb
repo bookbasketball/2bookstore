@@ -82,9 +82,15 @@ class BooksController < ApplicationController
     # @comment = current_suer.comments.build(comment_params, book: @book)
 
     if @comment.save
-      redirect_to @book, notice: '留言成功'
+      respond_to do |format| # format也可以是其他名稱，同理下面名稱需一致
+        format.js {render 'abc'} # 呼叫JS檔，若檔案名稱也叫format，則render同檔名的.html.erb檔
+        # format.html
+      end
+      # render js: 'alert("HI");' # 當前端也是用Rails時，才可這樣寫
+      # render json: {status: 'ok'}.to_json # 標準做法，通常".to_json"會省略
+      # redirect_to @book, notice: '留言成功'
     else
-      redirect_to @book, notice: '留言失敗'
+      render js: 'alert("發生錯誤");'
     end
   end
 

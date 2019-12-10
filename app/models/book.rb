@@ -10,6 +10,8 @@ class Book < ApplicationRecord
   has_many :comments
   has_many :tag_libs
   has_many :categories, through: :tag_libs
+  has_many :favorites
+  has_many :users, through: :favorites
 
   #scopes
   scope :available, -> { where(on_sell: true).where('list_price > 0') } #lamba是一個匿名函數
@@ -17,5 +19,11 @@ class Book < ApplicationRecord
   # def self.available 因是類別方法，所以必須在前面加一個".self"
   #   where(on_sell: true) where可在類別方法使用，其實where本身也是一種類別分法
   # end
+
+  def favorited_by?(u)
+    # favorites.find_by(user: u)
+    favorites.exists?(user: u)
+    # exists? = select.exists?(user: u) 會回傳布林值，效能較好
+  end
   
 end

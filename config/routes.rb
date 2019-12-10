@@ -25,4 +25,13 @@ Rails.application.routes.draw do
     resources :publishers
     resources :categories
   end
+
+  namespace :api do
+    resources :books, only: [] do # 預設8個路徑都不需要了，只保留favorite
+      member do
+        post :favorite # /api/books/:id/favorite
+      end
+    end
+  end
+
 end

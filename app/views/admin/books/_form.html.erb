@@ -69,7 +69,7 @@
       <div class="field">
         <%= form.label :category_id, '分類', class: 'label' %>
           <div class="select is-fullwidth">
-            <%= form.collection_select :category_id, Category.available, :id, :name %>
+            <%= form.collection_select :category_id, Category.where(online: true), :id, :name %>
           </div>
       </div>
     </div>

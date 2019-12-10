@@ -1,0 +1,9 @@
+let comment_area = document.querySelector('#comment_area');
+if (comment_area) {
+  let content = '<%= j(render 'comments/comment', comment: @comment) %>';
+  comment_area.innerHTML = content + comment_area.innerHTML;
+
+  document.querySelector('comment_form').reset(); <%# 留言成功後移除 %>
+}
+
+<%# j方法是rails內建，自動過濾不是HTML標籤 %>
