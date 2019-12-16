@@ -38,6 +38,8 @@ group :development, :test do
   gem 'foreman', '~> 0.86.0'
   gem 'hirb-unicode'
   gem 'rspec-rails', '~> 3.9' # 切記不要放在外面，只會在開發環境跑測試
+  gem 'factory_bot_rails', '~> 5.1', '>= 5.1.1' # 工廠包裝資料
+  gem 'faker', '~> 2.8', '>= 2.8.1' # 產出假資料
 end
 
 group :development do
