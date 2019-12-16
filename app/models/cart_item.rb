@@ -32,4 +32,9 @@ class CartItem
     # Book.find_by(id: @product_id) # id參數也可這樣寫，這邊 "product_id" 等於 "attr_reader :product" 產出的 "product_id"方法
   end
 
+  def total_price
+    # (@quantity * product.sell_price).to_i 
+    @quantity * product.sell_price
+  end
+
 end
