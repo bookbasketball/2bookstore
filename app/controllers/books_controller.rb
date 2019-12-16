@@ -83,7 +83,7 @@ class BooksController < ApplicationController
 
     if @comment.save
       respond_to do |format| # format也可以是其他名稱，同理下面名稱需一致
-        format.js {render 'abc'} # 呼叫JS檔，若檔案名稱也叫format，則render同檔名的.html.erb檔
+        format.js # {render 'abc'} # 呼叫JS檔，若檔案名稱也叫format，則render同檔名的.html.erb檔
         # format.html
       end
       # render js: 'alert("HI");' # 當前端也是用Rails時，才可這樣寫

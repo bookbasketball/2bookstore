@@ -37,6 +37,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'foreman', '~> 0.86.0'
   gem 'hirb-unicode'
+  gem 'rspec-rails', '~> 3.9' # 切記不要放在外面，只會在開發環境跑測試
 end
 
 group :development do

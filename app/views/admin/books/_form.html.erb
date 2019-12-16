@@ -13,7 +13,7 @@
 
 <%= form_for([:admin, @book]) do |form| %>
 
-  <div class="field"></div>
+  <div class="field">
     <%= cover_image_tag @book %>
     <%= form.label :cover_image, '封面', class: 'label' %>
     <%= form.file_field :cover_image, class: 'input' %>
