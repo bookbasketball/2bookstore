@@ -4,7 +4,7 @@
 
 FactoryBot.define do
   factory :book do
-    title      { Faker::name.name }
+    title      { Faker::Name.name }
     list_price { [*10..1000].sample }
     sell_price { [*10..1000].sample }
     page_num   { [*100..200].sample }
@@ -14,6 +14,5 @@ FactoryBot.define do
     isbn13     { SecureRandom.hex(6).upcase } # 隨機產出12碼亂數，且英文字母為大寫(.upcase)
     publisher
     category
-
   end
 end

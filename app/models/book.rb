@@ -7,9 +7,8 @@ class Book < ApplicationRecord
   #relationships
   has_one_attached :cover_image
   belongs_to :publisher # 對應publisher_id
+  belongs_to :category
   has_many :comments
-  has_many :tag_libs
-  has_many :categories, through: :tag_libs
   has_many :favorites
   has_many :users, through: :favorites
 

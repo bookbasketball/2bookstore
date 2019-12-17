@@ -3,6 +3,5 @@ class Category < ApplicationRecord
   validates :name, :description, presence: true
   
   #relationships
-  has_many :tag_libs
-  has_many :books, through: :tag_libs
+  has_many :books
 end
