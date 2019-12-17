@@ -35,6 +35,7 @@ class CartItem
   def total_price
     # (@quantity * product.sell_price).to_i 
     @quantity * product.sell_price
+    # @quantity * product.sell_price * 0.9 全館打九折
   end
 
 end

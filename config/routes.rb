@@ -6,11 +6,10 @@ Rails.application.routes.draw do
     collection do
       post :add, path: ':id/add' # cart/:id/add
       # post :add, path: 'add/:id' # cart/add/:id (另一種寫法)
-
     end
   end
   # 單數運用情境在前台使用者再看自己資料的時候，重點不在於名稱的單複數，而是在於"resource"是否是單複數
-  resources :carts
+  # resources :carts
   # 複數運用情境可能在Admin想看所有使用者資料，就可使用。因複數"resources"後面會展出(:id)，單數不會
 
   resources :books, only: [:index, :show] do

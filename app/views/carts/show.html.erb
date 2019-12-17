@@ -1,0 +1,8 @@
+<h1 class="title">我的購物車</h1>
+<i class="far fa-trash-alt"></i>
+<%= link_to "清空購物車", cart_path, method: 'delete', class: 'button is-small is-light' if not current_cart.empty? %>
+
+<%= render 'cart', cart: current_cart %>
+
+<%= link_to '繼續選購', root_path, class: 'button' %>
+<%= link_to '我要結帳', '#', class: 'button' if not current_cart.empty? %>

@@ -20,4 +20,9 @@ class CartsController < ApplicationController
       # 使用實體變數，會讓他永遠存在current_cart裡面，若是區域變數的話，下一次執行時就會重新開始，忘記上次資料
   # end
 
+  def destroy
+    session['caet1234'] = nil
+    redirect_to root_path, notice: '已清空購物車'
+  end
+
 end
