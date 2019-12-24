@@ -1,16 +1,2 @@
-<aside class="column is-2 is-fullheight menu">
-  <p class="menu-label">出版社</p>
-  <ul class="menu-list">
-    <% publishers.each do |publisher| %>
-      <li><%= link_to publisher.name, publisher_path(publisher) %></li>
-      <!-- <li><%= link_to publisher.name, publisher %></li> -->
-    <% end %>
-  </ul>
-
+<aside class="is-fullheight menu">
   <p class="menu-label">分類</p>
-  <ul class="menu-list">
-    <li><a href="#">Ruby</a></li>
-    <li><a href="#">JS</a></li>
-    <li><a href="#">Git</a></li>
-  </ul>
-</aside>

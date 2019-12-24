@@ -1,5 +1,9 @@
-class CartsController < ApplicationController
-  def add
+  class CartsController < ApplicationController
+  
+    layout 'book'
+    before_action :authenticate_user!, only: [:checkout]
+    
+    def add
     # cart = Cart.new 這樣會造成每次購買都會新增一台購物車，以致只會顯示最後購買的商品
     current_cart.add_item(params[:id])
     session['cart1234'] = current_cart.serialize # seesion是類似Hash結構
@@ -20,9 +24,18 @@ class CartsController < ApplicationController
       # 使用實體變數，會讓他永遠存在current_cart裡面，若是區域變數的話，下一次執行時就會重新開始，忘記上次資料
   # end
 
+  def checkout
+    @order = Order.new
+  end
+
   def destroy
     session['caet1234'] = nil
     redirect_to root_path, notice: '已清空購物車'
   end
+
+  # private
+  # def current_cart
+  #   @cart ||= Cart.from_hash(session['cart1234'])
+  # end
 
 end

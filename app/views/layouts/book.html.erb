@@ -16,10 +16,12 @@
       <div class="container">
         <%= render 'shared/flash' if notice %>
         <section class="columns is-fullheight">
-          <%= render 'shared/frontend/menu', publishers: Publisher.available %>
-            <div class="column is-10">
-              <%= yield %>
-            </div>
+          <div class="column is-2">
+            <%= render 'shared/frontend/menu', publishers: Publisher.available, categories: Category.all %>
+          </div>
+          <div class="column is-10">
+            <%= yield %>
+          </div>
         </section>
       </div>
     </section>
